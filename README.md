@@ -1,5 +1,6 @@
 !!! KNOWN BUG: TEMPERATURE READING IS NOT CORRECT !!!
 
+This script provides polling mechanism with json output for Air Master 2 AM7 p indoor air quality detector, if equipped with wifi module.
 
 Single request:
 
