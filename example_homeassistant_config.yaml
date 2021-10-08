@@ -1,0 +1,72 @@
+
+sensor:
+  - platform: command_line
+    name: AirMaster
+    scan_interval: 15
+    command_timeout: 10
+    unit_of_measurement: "ppm"
+    json_attributes:
+      - PM2.5
+      - PM10
+      - HCHO
+      - TVOC
+      - RH
+      - CO2
+      - TEMP
+    command: "python3 /config/scrape.py -h 192.168.88.13"
+  - platform: template
+    sensors:
+      airmaster_co2:
+        friendly_name: CO2
+        device_class: carbon_dioxide
+        unit_of_measurement: 'ppm'
+        value_template: >-
+          {{ states.sensor.airmaster.attributes["CO2"]  }}
+  - platform: template
+    sensors:
+      airmaster_pm25:
+        friendly_name: PM2.5
+        device_class: pm25
+        unit_of_measurement: 'µg/m³'
+        value_template: >-
+          {{ states.sensor.airmaster.attributes["PM2.5"]  }}
+  - platform: template
+    sensors:
+      airmaster_pm10:
+        friendly_name: PM10
+        device_class: pm10
+        unit_of_measurement: 'µg/m³'
+        value_template: >-
+          {{ states.sensor.airmaster.attributes["PM10"]  }}
+  - platform: template
+    sensors:
+      airmaster_tvoc:
+        friendly_name: TVOC
+        device_class: volatile_organic_compounds
+        unit_of_measurement: 'µg/m³'
+        value_template: >-
+          {{ states.sensor.airmaster.attributes["TVOC"]  }}
+  - platform: template
+    sensors:
+      airmaster_hcho:
+        friendly_name: HCHO
+        device_class: volatile_organic_compounds
+        unit_of_measurement: 'µg/m³'
+        value_template: >-
+          {{ states.sensor.airmaster.attributes["HCHO"]  }}
+  - platform: template
+    sensors:
+      airmaster_hcho:
+        friendly_name: Temperature
+        device_class: temperature
+        unit_of_measurement: "°C"
+        value_template: >-
+          {{ states.sensor.airmaster.attributes["TEMP"]  }}
+  - platform: template
+    sensors:
+      airmaster_humidity:
+        friendly_name: Humidity
+        device_class: humidity
+        unit_of_measurement: '%'
+        value_template: >-
+          {{ states.sensor.airmaster.attributes["RH"]  }}
