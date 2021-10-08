@@ -11,7 +11,7 @@ python3 ./scrape.py -h 192.168.88.13 poll
 
 
 Example output:
-`
+```
 ❯ python3 ./scrape.py poll
 {
     "PM2.5": "19",
@@ -39,4 +39,5 @@ Example output:
     "CO2": "558",
     "TEMP": "22.78",
     "RH": "37.00"
-}`
+}
+```
