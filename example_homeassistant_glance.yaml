@@ -1,0 +1,10 @@
+type: glance
+entities:
+  - entity: sensor.airmaster_co2
+  - entity: sensor.airmaster_pm25
+  - entity: sensor.airmaster_pm10
+  - entity: sensor.airmaster_humidity
+  - entity: sensor.airmaster_hcho
+  - entity: sensor.airmaster_tvoc
+title: AirMaster
+columns: 3
