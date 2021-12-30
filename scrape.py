@@ -37,7 +37,7 @@ def decode(data):
         17: "PM2.5",
         19: "PM10",
         21: "HCHO",
-        22: "TVOC",
+       # 22: "TVOC",
         23: "TVOC",
         24: "CO2",
         26: "TEMP",
@@ -80,7 +80,9 @@ def decode(data):
             if datatype == "B" and len(val) == 1 and val != "0":
                 val = "0" + val
             if label == "HCHO":
-                prepend = "0."
+                val = str("%.2f" % (float(val) / 100))
+            if label == "TVOC":
+                val = str("%.2f" % (float(val) / 100))
             elif label == "RH":
                 val = str("%.2f" % (float(val) / 100))
             sensors[label] = prepend + val
