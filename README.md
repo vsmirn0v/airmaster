@@ -1,5 +1,3 @@
-!!! KNOWN BUG: TEMPERATURE READING IS NOT CORRECT !!!
-
 This script provides polling mechanism with json output for Weeksky Instruments Air Master 2 AM7 p indoor air quality detector, if equipped with wifi module.
 
 Single request:
@@ -15,30 +13,30 @@ Example output:
 ```
 ❯ python3 ./scrape.py poll
 {
-    "PM2.5": "19",
-    "PM10": "20",
-    "HCHO": "0.02",
-    "TVOC": "0.31",
-    "CO2": "556",
-    "TEMP": "22.78",
-    "RH": "36.90"
+    "PM2.5": "10",
+    "PM10": "12",
+    "HCHO": "0.10",
+    "TVOC": "1.13",
+    "CO2": "655",
+    "TEMP": "23.90",
+    "RH": "63.00"
 }
 {
-    "PM2.5": "19",
-    "PM10": "21",
-    "HCHO": "0.01",
-    "TVOC": "0.31",
-    "CO2": "557",
-    "TEMP": "22.78",
-    "RH": "37.00"
+    "PM2.5": "9",
+    "PM10": "11",
+    "HCHO": "0.09",
+    "TVOC": "1.13",
+    "CO2": "656",
+    "TEMP": "23.90",
+    "RH": "63.00"
 }
 {
-    "PM2.5": "19",
-    "PM10": "21",
-    "HCHO": "0.02",
-    "TVOC": "0.31",
-    "CO2": "558",
-    "TEMP": "22.78",
-    "RH": "37.00"
+    "PM2.5": "10",
+    "PM10": "12",
+    "HCHO": "0.10",
+    "TVOC": "1.13",
+    "CO2": "655",
+    "TEMP": "23.80",
+    "RH": "62.90"
 }
 ```

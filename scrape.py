@@ -37,23 +37,23 @@ def decode(data):
         17: "PM2.5",
         19: "PM10",
         21: "HCHO",
-       # 22: "TVOC",
+        22: "hide",
         23: "TVOC",
         24: "CO2",
         26: "TEMP",
-        27: "TEMP",
+       # 27: "TEMP",
         28: "RH"
     }
     types = {
         17: "H",
         19: "H",
         24: ">H",
-        26: "<B",
-        27: "<B",
+        26: ">H",
+        #27: ">H",
         28: ">H"
     }
     sensors = { }
-    bytemap = list(itertools.chain(range(17,21,2), range(21, 24, 1), range(24, 26, 2), range(26, 28, 1), range(28, 31, 2)))
+    bytemap = list(itertools.chain(range(17,21,2), range(21, 24, 1), range(24, 26, 2), range(26, 28, 2), range(28, 31, 2)))
     for index, bytenum in enumerate(bytemap):
         if len(bytemap) <= index + 1:
             continue
@@ -79,12 +79,12 @@ def decode(data):
             val = str(struct.unpack(datatype,data[bytenum:bytemap[index+1]])[0])
             if datatype == "B" and len(val) == 1 and val != "0":
                 val = "0" + val
-            if label == "HCHO":
+            if label == "hide":
+                continue
+            if label in ["HCHO", "TVOC", "RH"]:
                 val = str("%.2f" % (float(val) / 100))
-            if label == "TVOC":
-                val = str("%.2f" % (float(val) / 100))
-            elif label == "RH":
-                val = str("%.2f" % (float(val) / 100))
+            if label == "TEMP":
+                val = str("%.2f" % (float(val) / 100 - 35))
             sensors[label] = prepend + val
         except:
             print(str(datasize) + ' ' + str(bytenum))
